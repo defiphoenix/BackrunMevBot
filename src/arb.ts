@@ -31,11 +31,11 @@ export class ArbDetector {
     const pool = this.meteora.getPool(e.mint);
     if (!pool) return; // big sell, but no Meteora pool for this token
 
-    // log.info(
-    //   `Big sell detected: ${e.quoteAmount.toFixed(2)} SOL of ${e.mint} ` +
-    //     `by ${e.txSigner} (tx ${e.signature}) — Meteora pool found: ` +
-    //     `${pool.name} [${pool.kind}] ${pool.address}`,
-    // );
+    log.info(
+      `Big sell detected: ${e.quoteAmount.toFixed(2)} SOL of ${e.mint} ` +
+        `by ${e.txSigner} (tx ${e.signature}) — Meteora pool found: ` +
+        `${pool.name} [${pool.kind}] ${pool.address}`,
+    );
 
     const tradeSol = CONFIG.tradeAmountSol;
 
@@ -59,10 +59,7 @@ export class ArbDetector {
       log.warn(`Cannot price sell leg for ${e.mint} — Jupiter quote failed`);
       return;
     }
-    // if (sellQuote.legs.length !== 1 || !METEORA_LABELS.has(sellQuote.legs[0].label)) {
-    //   log.warn(`Rejecting sell leg for ${e.mint} — not a single Meteora hop [${sellQuote.route}]`);
-    //   return;
-    // }
+    
     const solOut = sellQuote.outAmountUi;
 
     // Effective sell price realized (SOL per token) and the arb PnL.

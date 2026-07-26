@@ -87,9 +87,7 @@ export class PumpTradeStream {
    */
   private isTrackedPumpSwapTrade(e: PumpApiEvent): e is PumpSwapTradeEvent {
      if (e.action !== 'sell') return false;
-    // if (!(Number(e.quoteAmount) > CONFIG.bigSellThresholdSol)) return false;
-
-    // if (e.pool !== 'pump-amm') return false; // PumpSwap only
+    
      if (e.poolCreatedBy !== 'pump') return false; // pool must come from a pump.fun migration
      if (e.quoteMint !== CONFIG.wsolMint) return false; // SOL-quoted pools only
 
