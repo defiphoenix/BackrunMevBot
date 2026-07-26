@@ -110,7 +110,7 @@ export const CONFIG = {
   reconnectMaxMs: 30000,
 
   /** Port for the Express API + WS opportunity feed. */
-  apiPort: Number(process.env.API_PORT ?? 8787),
+  apiPort: Number(process.env.API_PORT ?? 8080),
 
   /** How many recent opportunities to keep for GET /opportunities. */
   opportunityHistorySize: Number(process.env.OPPORTUNITY_HISTORY_SIZE ?? 500),
